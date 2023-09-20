@@ -1,26 +1,8 @@
 import { useState } from "react"
 import "./style.css"
+import { musics } from "../Home/Index"
 
 function FormCulto (){
-
-    const musics = [
-        {
-            value: 0,
-            name: "Musica 1"
-        },
-        {
-            value: 1,
-            name: "Musica 2"
-        },
-        {
-            value: 2,
-            name: "Musica 3"
-        },
-        {
-            value: 3,
-            name: "Musica 4"
-        },
-    ]
 
     const [getInput,setGetInput] = useState("")
     const [getMusicManha,setGetMusicManha] = useState([])
