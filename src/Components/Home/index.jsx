@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Card from "../Card"
 import "./style.css"
+import FormCulto from "../FormCulto"
 
 function Home() {
 
@@ -35,8 +36,9 @@ function Home() {
       {closeCulto &&
       <section className="containerCulto">
         {appearItems && <button className="buttonClose" onClick={closeCardCulto}>X</button>}
-        <Card name={"Culto Público"} description={"Cultos regulares de Domingo"}/>
+        <Card name={"Culto Público"}description={"Cultos regulares de Domingo"}/>
         {disaappearItems && <button className="buttonOpen" onClick={openCardCulto}>Botão</button>}
+        {appearItems && <FormCulto/>}
       </section>}
 
       {closeOutros &&
@@ -45,6 +47,7 @@ function Home() {
         <Card name={"Outros"} description={"Outros eventos da Igreja"}/>
         {disaappearItems && <button className="buttonOpen" onClick={openCardOutros}>Botão</button>}
       </section>}
+
     </div>    
   )
 }
