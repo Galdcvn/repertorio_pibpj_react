@@ -1,11 +1,23 @@
 import { useState } from "react"
 import { musics } from "../Home/Index"
+import "./style.css"
 
 function FormOutros() {
 
     const [getInputName,setGetInputName] = useState("")
     const [getInputDate,setGetInputDate] = useState("")
     const [getMusic,setGetMusic] = useState([])
+    const [showInitialText,setShowInitialText] = useState(false)
+    const [showMusics,setShowMusics] = useState(false)
+
+    function getImputNameAndShowText(e){
+        setGetInputName(e.target.value)
+        setShowInitialText(true)
+    }
+    function getImputDateAndShowText(e){
+        setGetInputDate(e.target.value)
+        setShowInitialText(true)
+    }
 
     function selectMusic (e){
         const selectedValue = parseInt(e.target.value)
@@ -13,27 +25,30 @@ function FormOutros() {
         if(selectedMusicName){
             setGetMusic([...getMusic, selectedMusicName])
         }
-    }
+        setShowInitialText(true)
+        setShowMusics(true)
+    }    
 
     return(
-        <div>
+        <div className="formOutros">
             <h2>Nome do Evento</h2>
-            <input type="text" placeholder="Insira o Nome" onChange={e => setGetInputName(e.target.value)}/>
+            <input type="text" placeholder="Insira o Nome" onChange={getImputNameAndShowText}/>
 
             <h2>Data</h2>
-            <input type="text" placeholder="Insira a Data" onChange={e => setGetInputDate(e.target.value)}/>
+            <input type="text" placeholder="Insira a Data" onChange={getImputDateAndShowText}/>
 
             <h2>Músicas</h2>
             <select multiple name="maha" id="manha" onChange={selectMusic}>
                 {musics.map(itens => (<option key={itens.value} value={itens.value}>{itens.name}</option>))}
             </select>
 
-            <section className="textArea">
+            {showInitialText && (<section className="textArea">
                 <h2>{getInputName}</h2>
                 <h2>Dia {getInputDate}</h2>
-                <h2>Músicas</h2>
-                <ol>{getMusic.map((item,index) => (<li key={index}>{item}</li>))}</ol>                
-            </section>
+                <br />
+                {showMusics && (<h2>Músicas</h2>)}
+                {showMusics &&  (<ol>{getMusic.map((item,index) => (<li key={index}>- {item}</li>))}</ol> )}               
+            </section>)}
         </div>
     )
 }

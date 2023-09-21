@@ -1,9 +1,102 @@
+.formCulto{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.formCulto input{
+    background-color: rgba(255,255,255,0);
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    color: #ffffff;
 
+    padding: 10px 5px;
+    margin: 5px 0 10px;
+    
+    font-size: 16px;
+}
+
+
+
+.controlsManha{
+    margin-bottom: 5px;
+}
+.controlsManha h2{
+    display: inline;
+    margin-right: 10px;
+}
+.selectManha{
+   border-radius: 5px;
+   padding: 1px 5px;
+   margin-bottom: 10px;
+   
+   border: 1px solid #ffffff;
+   background-color: rgba(255,255,255,0);
+   color: #ffffff;
+}
+.selectManha option{
+    padding: 7px 5px;
+    margin: 5px 0;
+
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.2);
+
+    overflow: hidden;
+}
+
+
+
+.controlsNoite{
+    margin-bottom: 5px;
+}
+.controlsNoite h2{
+    display: inline;
+    margin-right: 5px;
+}
+.selectNoite{
+    border-radius: 5px;
+    padding: 1px 5px;
+    
+    border: 1px solid #ffffff;
+    background-color: rgba(255,255,255,0);
+    color: #ffffff;
+ }
+ .selectNoite option{
+     padding: 7px 5px;
+     margin: 5px 0;
+ 
+     border-radius: 5px;
+     background-color: rgba(255,255,255,0.2);
+ 
+     overflow: hidden;
+}
+
+
+
+.openButton{
+    font-size: 20px;
+    border: none;
+
+    color: #ffffff;
+    background-color: rgba(255,255,255,0);
+    cursor: pointer;
+}
+.closeButton{
+    font-size: 20px;
+    border: none;
+
+    color: #ffffff;
+    background-color: rgba(255,255,255,0);
+    cursor: pointer;
+}
 
 
 .textArea{
-    border: solid gray 1px;
-    border-radius: 15px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
 
     margin-top: 10px;
+    padding: 5px 7px;
+}
+.textArea li{
+    list-style: none;
 }

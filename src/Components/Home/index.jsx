@@ -1,8 +1,10 @@
 import { useState } from "react"
-import Card from "../Card"
-import "./style.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faRectangleXmark, faSquareCaretDown } from "@fortawesome/free-solid-svg-icons"
 import FormCulto from "../FormCulto"
 import FormOutros from "../FormOutros"
+import Card from "../Card"
+import "./style.css"
 
 export const musics = [
   {
@@ -115,170 +117,174 @@ export const musics = [
   },
   {
     value: 27,
-    name: "Infinitamente Mais (Asaph Borba)"
+    name: "Grande é o Senhor (Adhemar de Campos)"
   },
   {
     value: 28,
-    name: "Isaías 53 (Projeto Sola)"
+    name: "Infinitamente Mais (Asaph Borba)"
   },
   {
     value: 29,
-    name: "Jesus em Tua Presença (Morada)"
+    name: "Isaías 53 (Projeto Sola)"
   },
   {
     value: 30,
-    name: "Jesus te Amamos (Paulo César Baruk)"
+    name: "Jesus em Tua Presença (Morada)"
   },
   {
     value: 31,
-    name: "Leva-me Além (Toque no Altar)"
+    name: "Jesus te Amamos (Paulo César Baruk)"
   },
   {
     value: 32,
-    name: "Maior é Jesus (Comunidade da Zona Sul)"
+    name: "Leva-me Além (Toque no Altar)"
   },
   {
     value: 33,
-    name: "Majestoso (Paulo César Baruk)"
+    name: "Maior é Jesus (Comunidade da Zona Sul)"
   },
   {
     value: 34,
-    name: "Maranata (Avivah)"
+    name: "Majestoso (Paulo César Baruk)"
   },
   {
     value: 35,
-    name: "Maravilhoso (Ministério Koinonya de Louvor)"
+    name: "Maranata (Avivah)"
   },
   {
     value: 36,
-    name: "Me Derramar (Vineyard)"
+    name: "Maravilhoso (Ministério Koinonya de Louvor)"
   },
   {
     value: 37,
-    name: "Nosso Deus é Soberano (Comunidade Vila da Penha)"
+    name: "Me Derramar (Vineyard)"
   },
   {
     value: 38,
-    name: "Nosso Salvador (Marcus Witt)"
+    name: "Nosso Deus é Soberano (Comunidade Vila da Penha)"
   },
   {
     value: 39,
-    name: "O Nome de Jesus (Adhemar de Campos)"
+    name: "Nosso Salvador (Marcus Witt)"
   },
   {
     value: 40,
-    name: "Ó Quão Lindo Esse Nome É (Kemuel)"
+    name: "O Nome de Jesus (Adhemar de Campos)"
   },
   {
     value: 41,
-    name: "O Rei da Glória, o Rei dos Reis (IB Morumbi)"
+    name: "Ó Quão Lindo Esse Nome É (Kemuel)"
   },
   {
     value: 42,
-    name: "Perdão e Graça (Vineyard)"
+    name: "O Rei da Glória, o Rei dos Reis (IB Morumbi)"
   },
   {
     value: 43,
-    name: "Poder Pra Salvar (Aline Barros)"
+    name: "Perdão e Graça (Vineyard)"
   },
   {
     value: 44,
-    name: "Quão Grande é o Meu Deus (Soraya Moraes)"
+    name: "Poder Pra Salvar (Aline Barros)"
   },
   {
     value: 45,
-    name: "Quebrantado (Vineyard)"
+    name: "Quão Grande é o Meu Deus (Soraya Moraes)"
   },
   {
     value: 46,
-    name: "Quero Louvar-te (Paulo César Baruk)"
+    name: "Quebrantado (Vineyard)"
   },
   {
     value: 47,
-    name: "Rei das Nações (Vencedores por Cristo)"
+    name: "Quero Louvar-te (Paulo César Baruk)"
   },
   {
     value: 48,
-    name: "Rei do Meu Coração (Paulo César Baruk)"
+    name: "Rei das Nações (Vencedores por Cristo)"
   },
   {
     value: 49,
-    name: "Reina Hoje (Marina de Oliveira)"
+    name: "Rei do Meu Coração (Paulo César Baruk)"
   },
   {
     value: 50,
-    name: "Reinas (Purples)"
+    name: "Reina Hoje (Marina de Oliveira)"
   },
   {
     value: 51,
-    name: "Rocha Fiel (IB Nova Jerusalém)"
+    name: "Reinas (Purples)"
   },
   {
     value: 52,
-    name: "Salmo 23 (Cláudio Claro)"
+    name: "Rocha Fiel (IB Nova Jerusalém)"
   },
   {
     value: 53,
-    name: "Santo (Aline Barros)"
+    name: "Salmo 23 (Cláudio Claro)"
   },
   {
     value: 54,
-    name: "Santo, Santo, Santo (Renascer Praise)"
+    name: "Santo (Aline Barros)"
   },
   {
     value: 55,
-    name: "Segurança (CC 375)"
+    name: "Santo, Santo, Santo (Renascer Praise)"
   },
   {
     value: 56,
-    name: "Seja Engrandecido (Guilherme Kerr)"
+    name: "Segurança (CC 375)"
   },
   {
     value: 57,
-    name: "Ser Conhecido de Deus (Renascer Praise)"
+    name: "Seja Engrandecido (Guilherme Kerr)"
   },
   {
     value: 58,
-    name: "Só em Jesus (Shane & Shane)"
+    name: "Ser Conhecido de Deus (Renascer Praise)"
   },
   {
     value: 59,
-    name: "Sonda-me (Aline Barros)"
+    name: "Só em Jesus (Shane & Shane)"
   },
   {
     value: 60,
-    name: "Te Adorar é o Meu Prazer (Aline Barros)"
+    name: "Sonda-me (Aline Barros)"
   },
   {
     value: 61,
-    name: "Te Louvarei (Toque no Altar)"
+    name: "Te Adorar é o Meu Prazer (Aline Barros)"
   },
   {
     value: 62,
-    name: "Tremenda Graça (IBAB Celebração)"
+    name: "Te Louvarei (Toque no Altar)"
   },
   {
     value: 63,
-    name: "Tributo a Yehowah (Paulo César Baruk)"
+    name: "Tremenda Graça (IBAB Celebração)"
   },
   {
     value: 64,
-    name: "Tu és Santo (Kathleen Jungles)"
+    name: "Tributo a Yehowah (Paulo César Baruk)"
   },
   {
     value: 65,
-    name: "Tu es Soberano (Eli Soares)"
+    name: "Tu és Santo (Kathleen Jungles)"
   },
   {
     value: 66,
-    name: "Vem, Esta é a Hora (Vineyard)"
+    name: "Tu es Soberano (Eli Soares)"
   },
   {
     value: 67,
-    name: "Venha o Teu Reino (Davi Sacer)"
+    name: "Vem, Esta é a Hora (Vineyard)"
   },
   {
     value: 68,
+    name: "Venha o Teu Reino (Davi Sacer)"
+  },
+  {
+    value: 69,
     name: "Vim para Adorar-te (Diante do Trono)"
   },
 ]
@@ -312,24 +318,32 @@ function Home() {
   }
 
   return (
+    <>
+    <header>
+      <img src="https://i.imgur.com/aupdt0W.png" alt="Logo PIBPJ" />
+      <h1>Repetório Grupo de Louvor</h1>
+    </header>
     <div className="containerEventos">
       {closeCulto &&
       <section className="containerCulto">
-        {appearItems && <button className="buttonClose" onClick={closeCardCulto}>X</button>}
-        <Card name={"Culto Público"}description={"Cultos regulares de Domingo"}/>
-        {disaappearItems && <button className="buttonOpen" onClick={openCardCulto}>Botão</button>}
+        {appearItems && <button className="buttonClose" onClick={closeCardCulto}><FontAwesomeIcon icon={faRectangleXmark} /></button>}
+        <Card name={"Culto Público"}description={"Cultos regulares de Domingo."}/>
+        <div>
+          {disaappearItems && <button className="buttonOpen" onClick={openCardCulto}><FontAwesomeIcon icon={faSquareCaretDown} /></button>}
+        </div>
         {appearItems && <FormCulto/>}
       </section>}
-
       {closeOutros &&
       <section className="containerOutros">
-      {appearItems && <button className="buttonClose" onClick={closeCardOutros}>X</button>}
-      <Card name={"Outros"} description={"Outros eventos da Igreja"}/>
-      {disaappearItems && <button className="buttonOpen" onClick={openCardOutros}>Botão</button>}
+      {appearItems && <button className="buttonClose" onClick={closeCardOutros}><FontAwesomeIcon icon={faRectangleXmark} /></button>}
+      <Card name={"Outros"} description={"Outros eventos da Igreja."}/>
+      <div>
+        {disaappearItems && <button className="buttonOpen" onClick={openCardOutros}><FontAwesomeIcon icon={faSquareCaretDown} /></button>}
+      </div>
       {appearItems && <FormOutros/>}
       </section>}
-
-    </div>    
+    </div>
+    </>   
   )
 }
 
