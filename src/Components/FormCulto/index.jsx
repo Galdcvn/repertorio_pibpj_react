@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { musics } from "../Home/Index"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSquarePlus, faSquareMinus } from "@fortawesome/free-solid-svg-icons"
+import { faSquarePlus, faSquareMinus} from "@fortawesome/free-solid-svg-icons"
 import "./style.css"
 
 function FormCulto (){
@@ -12,21 +12,18 @@ function FormCulto (){
     const [openSelectNoite,setOpenSelectNoite] = useState(false)
     const [showButtonManha,setShowButtonManha] = useState(true)
     const [showButtonNoite,setShowButtonNoite] = useState(true)
-    const [showInitialText,setShowInitialText] = useState(false)
 
     const [getMusicManha,setGetMusicManha] = useState([])
     const [getMusicNoite,setGetMusicNoite] = useState([])
     
 
-    function getInputAndShowText(e){
-        setGetInput(e.target.value)
-        setShowInitialText(true)
+    function getInputDate(e){
+        setGetInput(e.target.value.split('-').reverse().join('/'))
     }
 
     function openSelectAndTextManha(){
         setOpenSelectManha(true)
         setShowButtonManha(false)
-        setShowInitialText(true)
     }
     function closeSelectAndTextManha(){
         setOpenSelectManha(false)
@@ -37,7 +34,6 @@ function FormCulto (){
     function openSelectAndTextNoite(){
         setOpenSelectNoite(true)
         setShowButtonNoite(false)
-        setShowInitialText(true)
     }
     function closeSelectAndTextNoite(){
         setOpenSelectNoite(false)
@@ -62,36 +58,49 @@ function FormCulto (){
     
     return(
         <div className="formCulto">
-            <h2>Data</h2>
-            <input type="text" placeholder="Insira a Data" onChange={getInputAndShowText}/>
+            <div className="controlsContainer">
+                
+                <h2>Data</h2>
+                <input type="date" placeholder="Insira a Data" onChange={getInputDate}/>
+                
+                <div className="controlsManha">
+                    <h2>Músicas da Manhã</h2>
+                    {showButtonManha && (<button onClick={openSelectAndTextManha} className="openButton">
+                    <FontAwesomeIcon icon={faSquarePlus} />
+                    </button>)}
+                    {openSelectManha && (<button onClick={closeSelectAndTextManha} className="closeButton">
+                    <FontAwesomeIcon icon={faSquareMinus} />
+                    </button>)}
+                </div>
 
-            <div className="controlsManha">
-                <h2>Músicas da Manhã</h2>
-                {showButtonManha && (<button onClick={openSelectAndTextManha} className="openButton">
-                <FontAwesomeIcon icon={faSquarePlus} />
-                </button>)}
-                {openSelectManha && (<button onClick={closeSelectAndTextManha} className="closeButton">
-                <FontAwesomeIcon icon={faSquareMinus} />
-                </button>)}
+                {openSelectManha && (<section className="sectionManha">
+                    {musics.map(itens => (
+                    <div key={itens.value} name={itens.name}>
+                        {itens.name} <button className="buttonDivManha" value={itens.value} onClick={selectMusicManha}>Inserir</button>
+                    </div>))}
+                </section>)}
+
+
+                <div className="controlsNoite">
+                    <h2>Músicas da Noite</h2>
+                    {showButtonNoite && (<button onClick={openSelectAndTextNoite} className="openButton">
+                    <FontAwesomeIcon icon={faSquarePlus} />
+                    </button>)}
+                    {openSelectNoite && (<button onClick={closeSelectAndTextNoite} className="closeButton">
+                    <FontAwesomeIcon icon={faSquareMinus} />
+                    </button>)}
+                </div>
+
+                {openSelectNoite && (<section className="sectionNoite">
+                    {musics.map(itens => (
+                    <div key={itens.value} name={itens.name}>
+                        {itens.name} <button className="buttonDivNoite" value={itens.value} onClick={selectMusicNoite}>Inserir</button>
+                    </div>))}
+                </section>)}
+
             </div>
-            {openSelectManha && (<select multiple name="maha" className="selectManha" onChange={selectMusicManha}>
-                {musics.map(itens => (<option key={itens.value} value={itens.value} name={itens.name}>{itens.name}</option>))}
-            </select>)}
 
-            <div className="controlsNoite">
-                <h2>Músicas da Noite</h2>
-                {showButtonNoite && (<button onClick={openSelectAndTextNoite} className="openButton">
-                <FontAwesomeIcon icon={faSquarePlus} />
-                </button>)}
-                {openSelectNoite && (<button onClick={closeSelectAndTextNoite} className="closeButton">
-                <FontAwesomeIcon icon={faSquareMinus} />
-                </button>)}
-            </div>
-            {openSelectNoite && (<select multiple name="noite" className="selectNoite" onChange={selectMusicNoite}>
-                {musics.map(itens => (<option key={itens.value} value={itens.value} name={itens.name}>{itens.name}</option>))}
-            </select>)}
-
-            {showInitialText && (<section className="textArea">
+            <section className="textArea">
                 <h2>Culto Público</h2>
                 <h2>Domingo - Dia {getInput}</h2>
                 <br />
@@ -100,7 +109,7 @@ function FormCulto (){
                 {openSelectManha && (<br/>)}
                 {openSelectNoite && (<h2>Noite</h2>)}
                 {openSelectNoite && (<ol>{getMusicNoite.map((item,index) => (<li key={index}>- {item}</li>))}</ol>)}
-            </section>)}
+            </section>
         </div>
     )
 }

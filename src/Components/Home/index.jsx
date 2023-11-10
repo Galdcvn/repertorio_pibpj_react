@@ -323,25 +323,47 @@ function Home() {
       <img src="https://i.imgur.com/aupdt0W.png" alt="Logo PIBPJ" />
       <h1>Repetório Grupo de Louvor</h1>
     </header>
+
     <div className="containerEventos">
+      
       {closeCulto &&
       <section className="containerCulto">
-        {appearItems && <button className="buttonClose" onClick={closeCardCulto}><FontAwesomeIcon icon={faRectangleXmark} /></button>}
+        
+        {appearItems && <button className="buttonClose" onClick={closeCardCulto}>
+          <FontAwesomeIcon icon={faRectangleXmark}/>
+        </button>}
+        
         <Card name={"Culto Público"}description={"Cultos regulares de Domingo."}/>
+        
         <div>
-          {disaappearItems && <button className="buttonOpen" onClick={openCardCulto}><FontAwesomeIcon icon={faSquareCaretDown} /></button>}
+          {disaappearItems && <button className="buttonOpen" onClick={openCardCulto}>
+            <FontAwesomeIcon icon={faSquareCaretDown}/>
+          </button>}        
         </div>
+        
         {appearItems && <FormCulto/>}
       </section>}
+
       {closeOutros &&
       <section className="containerOutros">
-      {appearItems && <button className="buttonClose" onClick={closeCardOutros}><FontAwesomeIcon icon={faRectangleXmark} /></button>}
-      <Card name={"Outros"} description={"Outros eventos da Igreja."}/>
-      <div>
-        {disaappearItems && <button className="buttonOpen" onClick={openCardOutros}><FontAwesomeIcon icon={faSquareCaretDown} /></button>}
-      </div>
-      {appearItems && <FormOutros/>}
+        
+        {appearItems && 
+        <button className="buttonClose" onClick={closeCardOutros}>
+          <FontAwesomeIcon icon={faRectangleXmark}/>
+        </button>}
+        
+        <Card name={"Outros"} description={"Outros eventos da Igreja."}/>
+        
+        <div>
+          {disaappearItems && <button className="buttonOpen" onClick={openCardOutros}>
+            <FontAwesomeIcon icon={faSquareCaretDown}/>
+          </button>}
+        </div>
+
+        {appearItems && <FormOutros/>}
+        
       </section>}
+
     </div>
     </>   
   )

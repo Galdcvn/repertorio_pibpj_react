@@ -1,4 +1,4 @@
-
+import "./style.css"
 
 function Card (props) {
 

@@ -18,10 +18,11 @@ header {
     margin-bottom: 5px;
 
     text-align: center;
+    font-size: 14px;
 
 }
 header img {
-    width: 10%;
+    width: 50px;
     margin-bottom: 10px;
 }
 
@@ -30,7 +31,7 @@ header img {
     justify-content: center;
     gap: 10%;
 
-    padding: 15px 5% 0;
+    padding: 0 5% 0;
 }
 
 .containerCulto{
@@ -84,4 +85,17 @@ header img {
     color: #ffffff;
     background-color: rgba(255,255,255,0);
     cursor: pointer;
+}
+
+@media screen and (max-width:820px) {
+    header {
+        font-size: 10px;
+    
+    }
+    
+    .containerCulto{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
 }

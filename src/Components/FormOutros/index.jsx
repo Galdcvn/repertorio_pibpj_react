@@ -7,16 +7,15 @@ function FormOutros() {
     const [getInputName,setGetInputName] = useState("")
     const [getInputDate,setGetInputDate] = useState("")
     const [getMusic,setGetMusic] = useState([])
-    const [showInitialText,setShowInitialText] = useState(false)
     const [showMusics,setShowMusics] = useState(false)
+    const [showText, setShowText] = useState(false)
 
-    function getImputNameAndShowText(e){
+    function getImputName(e){
         setGetInputName(e.target.value)
-        setShowInitialText(true)
+        setShowText(true)
     }
-    function getImputDateAndShowText(e){
-        setGetInputDate(e.target.value)
-        setShowInitialText(true)
+    function getImputDate(e){
+        setGetInputDate(e.target.value.split('-').reverse().join('/'))
     }
 
     function selectMusic (e){
@@ -25,30 +24,36 @@ function FormOutros() {
         if(selectedMusicName){
             setGetMusic([...getMusic, selectedMusicName])
         }
-        setShowInitialText(true)
         setShowMusics(true)
     }    
 
     return(
         <div className="formOutros">
-            <h2>Nome do Evento</h2>
-            <input type="text" placeholder="Insira o Nome" onChange={getImputNameAndShowText}/>
+            <div className="controlsContainer">
+                
+                <h2>Nome do Evento</h2>
+                <input type="text" className="inputName" placeholder="Insira o Nome" onChange={getImputName}/>
+                
+                <h2>Data</h2>
+                <input type="date" className="inputDate" placeholder="Insira a Data" onChange={getImputDate}/>
+               
+                <h2>Músicas</h2>
+                <section className="sectionOutros">
+                    {musics.map(itens => (
+                    <div key={itens.value} value={itens.value}>
+                        {itens.name} <button className="buttonDivOutros" value={itens.value} onClick={selectMusic}>Inserir</button>
+                    </div>))}
+                </section>
 
-            <h2>Data</h2>
-            <input type="text" placeholder="Insira a Data" onChange={getImputDateAndShowText}/>
+            </div>
 
-            <h2>Músicas</h2>
-            <select multiple name="maha" id="manha" onChange={selectMusic}>
-                {musics.map(itens => (<option key={itens.value} value={itens.value}>{itens.name}</option>))}
-            </select>
-
-            {showInitialText && (<section className="textArea">
-                <h2>{getInputName}</h2>
-                <h2>Dia {getInputDate}</h2>
+            <section className="textArea">
+                {showText && <h2>{getInputName}</h2>}
+                {showText && <h2>Dia {getInputDate}</h2>}
                 <br />
                 {showMusics && (<h2>Músicas</h2>)}
                 {showMusics &&  (<ol>{getMusic.map((item,index) => (<li key={index}>- {item}</li>))}</ol> )}               
-            </section>)}
+            </section>
         </div>
     )
 }
